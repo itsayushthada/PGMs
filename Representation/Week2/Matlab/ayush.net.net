@@ -1,0 +1,97 @@
+net
+{
+	node_size = (90.0 36.0);
+}
+
+node JamesPhenotype
+{
+	states = ("D" "D_bar" );
+	position = (84 -222);
+	ismapvariable = "false";
+	label = "JamesPhenotype";
+	diagnosistype = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node JamesGenotype
+{
+	states = ("FF" "Ff" "ff" );
+	position = (365 -9);
+	ismapvariable = "false";
+	label = "JamesGenoytpe";
+	diagnosistype = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node RenePhenotype
+{
+	states = ("D" "D_bar" );
+	position = (1076 -241);
+	ismapvariable = "false";
+	label = "RenePhenotype";
+	diagnosistype = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node ChildPhenotype
+{
+	states = ("D" "D_bar" );
+	position = (615 -495);
+	ismapvariable = "false";
+	label = "ChildPhenotype";
+	diagnosistype = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node ChildGenotype
+{
+	states = ("FF" "Ff" "ff" );
+	position = (608 -272);
+	ismapvariable = "false";
+	label = "ChildGenoytpe";
+	diagnosistype = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node ReneGenotype
+{
+	states = ("FF" "Ff" "ff" );
+	position = (747 -14);
+	ismapvariable = "false";
+	label = "ReneGenoytpe";
+	diagnosistype = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+potential ( JamesPhenotype | JamesGenotype )
+{
+	data = ((	0.8	0.2	)
+		(	0.6	0.4	)
+		(	0.1	0.9	));
+}
+potential ( JamesGenotype | )
+{
+	data = (	0.01	0.18	0.81	);
+}
+potential ( RenePhenotype | ReneGenotype )
+{
+	data = ((	0.8	0.2	)
+		(	0.6	0.4	)
+		(	0.1	0.9	));
+}
+potential ( ChildPhenotype | ChildGenotype )
+{
+	data = ((	0.8	0.2	)
+		(	0.6	0.4	)
+		(	0.1	0.9	));
+}
+potential ( ChildGenotype | JamesGenotype ReneGenotype )
+{
+	data = (((	1.0	0.0	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.0	1.0	0.0	))
+		((	0.5	0.5	0.0	)
+		(	0.25	0.5	0.25	)
+		(	0.0	0.5	0.5	))
+		((	0.0	1.0	0.0	)
+		(	0.0	0.5	0.5	)
+		(	0.0	0.0	1.0	)));
+}
+potential ( ReneGenotype | )
+{
+	data = (	0.01	0.18	0.81	);
+}
